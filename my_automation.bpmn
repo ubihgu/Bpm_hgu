@@ -146,20 +146,38 @@
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_1w5s7sg" sourceRef="Activity_06zt3oo" targetRef="Event_0sj1viz" />
     <bpmn:sequenceFlow id="Flow_06xnrmt" sourceRef="Event_0sj1viz" targetRef="Activity_19lnls7" />
+    <bpmn:endEvent id="Event_1chhrrw" name="End Event">
+      <bpmn:incoming>Flow_10jhbpu</bpmn:incoming>
+      <bpmn:incoming>Flow_05y9t2h</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_10jhbpu" sourceRef="Activity_19lnls7" targetRef="Event_1chhrrw" />
+    <bpmn:sequenceFlow id="Flow_05y9t2h" sourceRef="Activity_0lli95e" targetRef="Event_1chhrrw" />
     <bpmn:serviceTask id="Activity_19lnls7" name="Mark as Done (Jira Integration)" camunda:type="external" camunda:topic="msa_workflow">
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="workflow_data">
             <camunda:map>
-              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
-              <camunda:entry key="serviceName">Process/Ticketing/Jira_Integration/Jira_Integration</camunda:entry>
-              <camunda:entry key="serviceInstanceId" />
-              <camunda:entry key="processName">Process/Ticketing/Jira_Integration/Mark_as_Done</camunda:entry>
-              <camunda:entry key="processType">DELETE</camunda:entry>
+              <camunda:entry key="ubiqubeId">
+                <camunda:value>PLACEHOLDER_UBIQUBE_ID</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="serviceName">
+                <camunda:value>Process/Ticketing/Jira_Integration/Jira_Integration</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="serviceInstanceId">
+                <camunda:value>${JSON(Activity_1700mca).prop("serviceId").value()}</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="processName">
+                <camunda:value>Process/Ticketing/Jira_Integration/Mark_as_Done</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="processType">
+                <camunda:value>DELETE</camunda:value>
+              </camunda:entry>
               <camunda:entry key="processVariables">
                 <camunda:map />
               </camunda:entry>
-              <camunda:entry key="resumeOnFail">false</camunda:entry>
+              <camunda:entry key="resumeOnFail">
+                <camunda:value>false</camunda:value>
+              </camunda:entry>
             </camunda:map>
           </camunda:inputParameter>
         </camunda:inputOutput>
@@ -167,12 +185,6 @@
       <bpmn:incoming>Flow_06xnrmt</bpmn:incoming>
       <bpmn:outgoing>Flow_10jhbpu</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:endEvent id="Event_1chhrrw" name="End Event">
-      <bpmn:incoming>Flow_10jhbpu</bpmn:incoming>
-      <bpmn:incoming>Flow_05y9t2h</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_10jhbpu" sourceRef="Activity_19lnls7" targetRef="Event_1chhrrw" />
-    <bpmn:sequenceFlow id="Flow_05y9t2h" sourceRef="Activity_0lli95e" targetRef="Event_1chhrrw" />
   </bpmn:process>
   <bpmn:signal id="Signal_0075ivx" name="Signal_0075ivx" />
   <bpmn:signal id="Signal_05pou78" name="Signal_05pou78" />
@@ -247,14 +259,14 @@
           <dc:Bounds x="596" y="145" width="49" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_1623170856445_di" bpmnElement="Activity_19lnls7">
-        <dc:Bounds x="710" y="80" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1chhrrw_di" bpmnElement="Event_1chhrrw">
         <dc:Bounds x="882" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="874" y="78" width="51" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1623171166079_di" bpmnElement="Activity_19lnls7">
+        <dc:Bounds x="710" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
