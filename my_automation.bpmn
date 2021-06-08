@@ -157,27 +157,15 @@
         <camunda:inputOutput>
           <camunda:inputParameter name="workflow_data">
             <camunda:map>
-              <camunda:entry key="ubiqubeId">
-                <camunda:value>PLACEHOLDER_UBIQUBE_ID</camunda:value>
-              </camunda:entry>
-              <camunda:entry key="serviceName">
-                <camunda:value>Process/Ticketing/Jira_Integration/Jira_Integration</camunda:value>
-              </camunda:entry>
-              <camunda:entry key="serviceInstanceId">
-                <camunda:value>${JSON(Activity_1700mca).prop("serviceId").value()}</camunda:value>
-              </camunda:entry>
-              <camunda:entry key="processName">
-                <camunda:value>Process/Ticketing/Jira_Integration/Mark_as_Done</camunda:value>
-              </camunda:entry>
-              <camunda:entry key="processType">
-                <camunda:value>DELETE</camunda:value>
-              </camunda:entry>
+              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
+              <camunda:entry key="serviceName">Process/Ticketing/Jira_Integration/Jira_Integration</camunda:entry>
+              <camunda:entry key="serviceInstanceId">${JSON(Activity_1700mca).prop("serviceId").value()}</camunda:entry>
+              <camunda:entry key="processName">Process/Ticketing/Jira_Integration/Mark_as_Done</camunda:entry>
+              <camunda:entry key="processType">DELETE</camunda:entry>
               <camunda:entry key="processVariables">
                 <camunda:map />
               </camunda:entry>
-              <camunda:entry key="resumeOnFail">
-                <camunda:value>false</camunda:value>
-              </camunda:entry>
+              <camunda:entry key="resumeOnFail">false</camunda:entry>
             </camunda:map>
           </camunda:inputParameter>
         </camunda:inputOutput>
