@@ -165,20 +165,38 @@
       <bpmn:incoming>Flow_06xnrmt</bpmn:incoming>
       <bpmn:outgoing>Flow_10jhbpu</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:exclusiveGateway id="Gateway_16muje2" name="Gateway_16muje2" default="Flow_1qdb1pk">
+    <bpmn:exclusiveGateway id="Gateway_16muje2" default="Flow_1qdb1pk">
       <bpmn:incoming>Flow_0g9ahy5</bpmn:incoming>
       <bpmn:outgoing>Flow_1qdb1pk</bpmn:outgoing>
       <bpmn:outgoing>Flow_1f5qej8</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0g9ahy5" sourceRef="Activity_01sxicg" targetRef="Gateway_16muje2" />
     <bpmn:sequenceFlow id="Flow_1qdb1pk" sourceRef="Gateway_16muje2" targetRef="Activity_06zt3oo" />
-    <bpmn:sequenceFlow id="Flow_1f5qej8" sourceRef="Gateway_16muje2" targetRef="Activity_0lli95e" />
+    <bpmn:sequenceFlow id="Flow_1f5qej8" name="Failed" sourceRef="Gateway_16muje2" targetRef="Activity_0lli95e">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JSON(Activity_01sxicg).prop("status").value() == 'FAIL'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmn:signal id="Signal_0075ivx" name="Signal_0075ivx" />
   <bpmn:signal id="Signal_05pou78" name="Signal_05pou78" />
   <bpmn:signal id="Signal_0s4979m" name="Signal_0s4979m" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNEdge id="Flow_1f5qej8_di" bpmnElement="Flow_1f5qej8">
+        <di:waypoint x="340" y="145" />
+        <di:waypoint x="340" y="230" />
+        <di:waypoint x="430" y="230" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="295" y="203" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qdb1pk_di" bpmnElement="Flow_1qdb1pk">
+        <di:waypoint x="365" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g9ahy5_di" bpmnElement="Flow_0g9ahy5">
+        <di:waypoint x="250" y="120" />
+        <di:waypoint x="315" y="120" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_05y9t2h_di" bpmnElement="Flow_05y9t2h">
         <di:waypoint x="530" y="230" />
         <di:waypoint x="900" y="230" />
@@ -203,19 +221,6 @@
       <bpmndi:BPMNEdge id="Flow_1vuzuyk_di" bpmnElement="Flow_1vuzuyk">
         <di:waypoint x="-62" y="120" />
         <di:waypoint x="-10" y="120" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0g9ahy5_di" bpmnElement="Flow_0g9ahy5">
-        <di:waypoint x="250" y="120" />
-        <di:waypoint x="315" y="120" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1qdb1pk_di" bpmnElement="Flow_1qdb1pk">
-        <di:waypoint x="365" y="120" />
-        <di:waypoint x="430" y="120" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1f5qej8_di" bpmnElement="Flow_1f5qej8">
-        <di:waypoint x="340" y="145" />
-        <di:waypoint x="340" y="230" />
-        <di:waypoint x="430" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="-98" y="102" width="36" height="36" />
