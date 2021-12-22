@@ -214,7 +214,7 @@
               <camunda:entry key="processVariables">
                 <camunda:map>
                   <camunda:entry key="jira_device_id">
-                    <camunda:value>BLR142</camunda:value>
+                    <camunda:value>BLR129</camunda:value>
                   </camunda:entry>
                   <camunda:entry key="jira_project">
                     <camunda:value>10902</camunda:value>
@@ -347,7 +347,7 @@
       <bpmndi:BPMNShape id="ServiceTask_1623224403206_di" bpmnElement="Activity_08207ef">
         <dc:Bounds x="720" y="190" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="ServiceTask_1623229819915_di" bpmnElement="Activity_1700mca">
+      <bpmndi:BPMNShape id="ServiceTask_1640170338097_di" bpmnElement="Activity_1700mca">
         <dc:Bounds x="-10" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
