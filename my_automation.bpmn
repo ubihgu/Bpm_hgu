@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="PLACEHOLDER_PROCESS_ID" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start Event">
+      <bpmn:outgoing>Flow_1vuzuyk</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1vuzuyk" sourceRef="StartEvent_1" targetRef="Activity_1700mca" />
+    <bpmn:sequenceFlow id="Flow_1ve3fbh" sourceRef="Activity_1700mca" targetRef="Activity_01sxicg" />
+    <bpmn:serviceTask id="Activity_01sxicg" name="Configuration Migration" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">
+            <camunda:map>
+              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
+              <camunda:entry key="serviceName">Process/workflows/Configuration_Migration/Configuration_Migration</camunda:entry>
+              <camunda:entry key="serviceInstanceId">145</camunda:entry>
+              <camunda:entry key="processName">Process/workflows/Configuration_Migration/Migrate_Config</camunda:entry>
+              <camunda:entry key="processType">UPDATE</camunda:entry>
+              <camunda:entry key="processVariables">
+                <camunda:map>
+                  <camunda:entry key="SERVICEINSTANCEREFERENCE">BLRSID145</camunda:entry>
+                  <camunda:entry key="TASKID">1</camunda:entry>
+                  <camunda:entry key="PROCESSINSTANCEID">838</camunda:entry>
+                  <camunda:entry key="destination_me">BLR141</camunda:entry>
+                  <camunda:entry key="TASKINSTANCEID">1287</camunda:entry>
+                  <camunda:entry key="ms_name">routing</camunda:entry>
+                  <camunda:entry key="service_id">145</camunda:entry>
+                  <camunda:entry key="source_me">BLR140</camunda:entry>
+                  <camunda:entry key="EXECNUMBER">1</camunda:entry>
+                  <camunda:entry key="UBIQUBEID">BLRA6</camunda:entry>
+                  <camunda:entry key="SERVICEINSTANCEID">145</camunda:entry>
+                </camunda:map>
+              </camunda:entry>
+              <camunda:entry key="resumeOnFail">false</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ve3fbh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g9ahy5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_06zt3oo" name="Container Deployment" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">
+            <camunda:map>
+              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
+              <camunda:entry key="serviceName">Process/workflows/Container_Deployment/Container_Deployment</camunda:entry>
+              <camunda:entry key="processName">Process/workflows/Container_Deployment/Process_Create_Container</camunda:entry>
+              <camunda:entry key="processType">CREATE</camunda:entry>
+              <camunda:entry key="processVariables">
+                <camunda:map>
+                  <camunda:entry key="device_id">BLR139</camunda:entry>
+                  <camunda:entry key="docker_containers">
+                    <camunda:list>
+                      <camunda:map>
+                        <camunda:entry key="object_id">nginx</camunda:entry>
+                        <camunda:entry key="image">nginx</camunda:entry>
+                        <camunda:entry key="networkport">8042</camunda:entry>
+                        <camunda:entry key="containerport">8042</camunda:entry>
+                      </camunda:map>
+                    </camunda:list>
+                  </camunda:entry>
+                </camunda:map>
+              </camunda:entry>
+              <camunda:entry key="resumeOnFail">false</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1qdb1pk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eyc9y1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="Event_0sj1viz" name="Validation">
+      <bpmn:incoming>Flow_0yk39wp</bpmn:incoming>
+      <bpmn:outgoing>Flow_06xnrmt</bpmn:outgoing>
+      <bpmn:signalEventDefinition id="SignalEventDefinition_0s4979m" signalRef="Signal_0s4979m" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_06xnrmt" sourceRef="Event_0sj1viz" targetRef="Activity_19lnls7" />
+    <bpmn:endEvent id="Event_1chhrrw" name="End Event">
+      <bpmn:incoming>Flow_10jhbpu</bpmn:incoming>
+      <bpmn:incoming>Flow_05y9t2h</bpmn:incoming>
+      <bpmn:incoming>Flow_1jmj5v5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_10jhbpu" sourceRef="Activity_19lnls7" targetRef="Event_1chhrrw" />
+    <bpmn:sequenceFlow id="Flow_05y9t2h" sourceRef="Activity_0lli95e" targetRef="Event_1chhrrw" />
+    <bpmn:serviceTask id="Activity_19lnls7" name="Mark as Done (Jira Integration)" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">
+            <camunda:map>
+              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
+              <camunda:entry key="serviceName">Process/Ticketing/Jira_Integration/Jira_Integration</camunda:entry>
+              <camunda:entry key="serviceInstanceId">${JSON(Activity_1700mca).prop("serviceId").value()}</camunda:entry>
+              <camunda:entry key="processName">Process/Ticketing/Jira_Integration/Mark_as_Done</camunda:entry>
+              <camunda:entry key="processType">DELETE</camunda:entry>
+              <camunda:entry key="processVariables">
+                <camunda:map />
+              </camunda:entry>
+              <camunda:entry key="resumeOnFail">false</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06xnrmt</bpmn:incoming>
+      <bpmn:outgoing>Flow_10jhbpu</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_16muje2" default="Flow_1qdb1pk">
+      <bpmn:incoming>Flow_0g9ahy5</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qdb1pk</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1f5qej8</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0g9ahy5" sourceRef="Activity_01sxicg" targetRef="Gateway_16muje2" />
+    <bpmn:sequenceFlow id="Flow_1qdb1pk" sourceRef="Gateway_16muje2" targetRef="Activity_06zt3oo" />
+    <bpmn:sequenceFlow id="Flow_1f5qej8" name="Failed" sourceRef="Gateway_16muje2" targetRef="Activity_0lli95e">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JSON(Activity_01sxicg).prop("status").value() == 'FAIL'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_0lli95e" name="Alarm" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">
+            <camunda:map>
+              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
+              <camunda:entry key="serviceName">Process/workflows/Log_into_ES/Log_into_ES</camunda:entry>
+              <camunda:entry key="serviceInstanceId">146</camunda:entry>
+              <camunda:entry key="processName">Process/workflows/Log_into_ES/Write</camunda:entry>
+              <camunda:entry key="processType">UPDATE</camunda:entry>
+              <camunda:entry key="processVariables">
+                <camunda:map>
+                  <camunda:entry key="SERVICEINSTANCEREFERENCE">BLRSID146</camunda:entry>
+                  <camunda:entry key="severity">1</camunda:entry>
+                  <camunda:entry key="TASKID">1</camunda:entry>
+                  <camunda:entry key="PROCESSINSTANCEID">827</camunda:entry>
+                  <camunda:entry key="TASKINSTANCEID">1276</camunda:entry>
+                  <camunda:entry key="service_id">146</camunda:entry>
+                  <camunda:entry key="EXECNUMBER">1</camunda:entry>
+                  <camunda:entry key="UBIQUBEID">BLRA6</camunda:entry>
+                  <camunda:entry key="message">Migration failed</camunda:entry>
+                  <camunda:entry key="type">BPM</camunda:entry>
+                  <camunda:entry key="device">BLR141</camunda:entry>
+                  <camunda:entry key="SERVICEINSTANCEID">146</camunda:entry>
+                </camunda:map>
+              </camunda:entry>
+              <camunda:entry key="resumeOnFail">false</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1f5qej8</bpmn:incoming>
+      <bpmn:outgoing>Flow_05y9t2h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_19m6oor" default="Flow_0yk39wp">
+      <bpmn:incoming>Flow_1eyc9y1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0yk39wp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0skkqp9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1eyc9y1" sourceRef="Activity_06zt3oo" targetRef="Gateway_19m6oor" />
+    <bpmn:sequenceFlow id="Flow_0yk39wp" sourceRef="Gateway_19m6oor" targetRef="Event_0sj1viz" />
+    <bpmn:sequenceFlow id="Flow_0skkqp9" name="Failed" sourceRef="Gateway_19m6oor" targetRef="Activity_08207ef">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${JSON(Activity_06zt3oo).prop("status").value() == 'FAIL'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_08207ef" name="Alarm" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">
+            <camunda:map>
+              <camunda:entry key="ubiqubeId">PLACEHOLDER_UBIQUBE_ID</camunda:entry>
+              <camunda:entry key="serviceName">Process/workflows/Log_into_ES/Log_into_ES</camunda:entry>
+              <camunda:entry key="serviceInstanceId">147</camunda:entry>
+              <camunda:entry key="processName">Process/workflows/Log_into_ES/Write</camunda:entry>
+              <camunda:entry key="processType">UPDATE</camunda:entry>
+              <camunda:entry key="processVariables">
+                <camunda:map>
+                  <camunda:entry key="SERVICEINSTANCEREFERENCE">BLRSID147</camunda:entry>
+                  <camunda:entry key="severity">1</camunda:entry>
+                  <camunda:entry key="TASKID">1</camunda:entry>
+                  <camunda:entry key="PROCESSINSTANCEID">851</camunda:entry>
+                  <camunda:entry key="TASKINSTANCEID">1300</camunda:entry>
+                  <camunda:entry key="service_id">147</camunda:entry>
+                  <camunda:entry key="EXECNUMBER">1</camunda:entry>
+                  <camunda:entry key="UBIQUBEID">BLRA6</camunda:entry>
+                  <camunda:entry key="message">Container deployment failed</camunda:entry>
+                  <camunda:entry key="type">BPM</camunda:entry>
+                  <camunda:entry key="device">BLR139</camunda:entry>
+                  <camunda:entry key="SERVICEINSTANCEID">147</camunda:entry>
+                </camunda:map>
+              </camunda:entry>
+              <camunda:entry key="resumeOnFail">false</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0skkqp9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jmj5v5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1jmj5v5" sourceRef="Activity_08207ef" targetRef="Event_1chhrrw" />
+    <bpmn:serviceTask id="Activity_1700mca" name="Create Ticket (Jira Integration)" camunda:type="external" camunda:topic="msa_workflow">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="workflow_data">
+            <camunda:map>
+              <camunda:entry key="ubiqubeId">
+                <camunda:value>PLACEHOLDER_UBIQUBE_ID</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="serviceName">
+                <camunda:value>Process/Ticketing/Jira_Integration/Jira_Integration</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="processName">
+                <camunda:value>Process/Ticketing/Jira_Integration/Create_Ticket</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="processType">
+                <camunda:value>CREATE</camunda:value>
+              </camunda:entry>
+              <camunda:entry key="processVariables">
+                <camunda:map>
+                  <camunda:entry key="jira_device_id">
+                    <camunda:value>BLR129</camunda:value>
+                  </camunda:entry>
+                  <camunda:entry key="jira_project">
+                    <camunda:value>10902</camunda:value>
+                  </camunda:entry>
+                  <camunda:entry key="summary">
+                    <camunda:value>E2E Automation Tyrell</camunda:value>
+                  </camunda:entry>
+                  <camunda:entry key="description">
+                    <camunda:value>E2E Automation BPM for Tyrell subtenant on hgu quickstart</camunda:value>
+                  </camunda:entry>
+                  <camunda:entry key="jira_issue_id" />
+                </camunda:map>
+              </camunda:entry>
+              <camunda:entry key="resumeOnFail">
+                <camunda:value>false</camunda:value>
+              </camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1vuzuyk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ve3fbh</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmn:signal id="Signal_0075ivx" name="Signal_0075ivx" />
+  <bpmn:signal id="Signal_05pou78" name="Signal_05pou78" />
+  <bpmn:signal id="Signal_0s4979m" name="Signal_0s4979m" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PLACEHOLDER_PROCESS_ID">
+      <bpmndi:BPMNEdge id="Flow_1jmj5v5_di" bpmnElement="Flow_1jmj5v5">
+        <di:waypoint x="820" y="230" />
+        <di:waypoint x="1000" y="230" />
+        <di:waypoint x="1000" y="138" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0skkqp9_di" bpmnElement="Flow_0skkqp9">
+        <di:waypoint x="620" y="145" />
+        <di:waypoint x="620" y="230" />
+        <di:waypoint x="720" y="230" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="635" y="185" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0yk39wp_di" bpmnElement="Flow_0yk39wp">
+        <di:waypoint x="645" y="120" />
+        <di:waypoint x="712" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eyc9y1_di" bpmnElement="Flow_1eyc9y1">
+        <di:waypoint x="530" y="120" />
+        <di:waypoint x="595" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1f5qej8_di" bpmnElement="Flow_1f5qej8">
+        <di:waypoint x="340" y="145" />
+        <di:waypoint x="340" y="350" />
+        <di:waypoint x="430" y="350" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="295" y="295" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qdb1pk_di" bpmnElement="Flow_1qdb1pk">
+        <di:waypoint x="365" y="120" />
+        <di:waypoint x="430" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g9ahy5_di" bpmnElement="Flow_0g9ahy5">
+        <di:waypoint x="250" y="120" />
+        <di:waypoint x="315" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05y9t2h_di" bpmnElement="Flow_05y9t2h">
+        <di:waypoint x="530" y="350" />
+        <di:waypoint x="1000" y="350" />
+        <di:waypoint x="1000" y="138" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10jhbpu_di" bpmnElement="Flow_10jhbpu">
+        <di:waypoint x="910" y="120" />
+        <di:waypoint x="982" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06xnrmt_di" bpmnElement="Flow_06xnrmt">
+        <di:waypoint x="748" y="120" />
+        <di:waypoint x="810" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ve3fbh_di" bpmnElement="Flow_1ve3fbh">
+        <di:waypoint x="90" y="120" />
+        <di:waypoint x="150" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vuzuyk_di" bpmnElement="Flow_1vuzuyk">
+        <di:waypoint x="-62" y="120" />
+        <di:waypoint x="-10" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="-98" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-108" y="153" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1623170694824_di" bpmnElement="Activity_01sxicg">
+        <dc:Bounds x="150" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1623170742678_di" bpmnElement="Activity_06zt3oo">
+        <dc:Bounds x="430" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0sj1viz_di" bpmnElement="Event_0sj1viz">
+        <dc:Bounds x="712" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="706" y="145" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1chhrrw_di" bpmnElement="Event_1chhrrw">
+        <dc:Bounds x="982" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="974" y="78" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1623171166079_di" bpmnElement="Activity_19lnls7">
+        <dc:Bounds x="810" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_16muje2_di" bpmnElement="Gateway_16muje2" isMarkerVisible="true">
+        <dc:Bounds x="315" y="95" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="296" y="58" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1623224028841_di" bpmnElement="Activity_0lli95e">
+        <dc:Bounds x="430" y="310" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_19m6oor_di" bpmnElement="Gateway_19m6oor" isMarkerVisible="true">
+        <dc:Bounds x="595" y="95" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="577" y="57.5" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1623224403206_di" bpmnElement="Activity_08207ef">
+        <dc:Bounds x="720" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1640170338097_di" bpmnElement="Activity_1700mca">
+        <dc:Bounds x="-10" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
